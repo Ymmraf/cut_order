@@ -198,8 +198,8 @@ function deleteOrder(number) {
       })
 }
 
+//check ว่ากรอกข้อมูลครบมั้ย > มีออเดอร์มั้ย 
 function confirmSubmit() {
-
     if (customerName === "" || customerPhone === "" || customerLineID === "" || pickupDate === "" || pickupTime === "") {
         Swal.fire({
             title : "กรุณากรอกข้อมูลผู้สั่งตัดให้ครบ",
@@ -228,31 +228,10 @@ function confirmSubmit() {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'ยืนยัน',
-        cancelButtonText: 'กลับ'
+        cancelButtonText: 'ยกเลิก'
       }).then((result) => {
         if (result.isConfirmed) {
             id('submitForm').submit()
         }
       })
-}
-
-function checkIfBlank() {
-    if (customerName === "" || customerPhone === "" || customerLineID === "" || pickupDate === "" || pickupTime === "") {
-        Swal.fire({
-            title : "กรุณากรอกข้อมูลผู้สั่งตัดให้ครบ",
-            icon : 'warning',
-            confirmButtonText : "ปิด",
-            confirmButtonColor : "#10446c"
-        })
-        return
-    } 
-    if (orderQuantity == 0) {
-        Swal.fire({
-            title : "กรุณาเพิ่มรายการสั่งตัดกระจก",
-            icon : 'warning',
-            confirmButtonText : "ปิด",
-            confirmButtonColor : "#10446c"
-        })
-        return
-    }
 }
