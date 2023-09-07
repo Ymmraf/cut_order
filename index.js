@@ -19,42 +19,40 @@ app.get('/order', (req,res) => {
     res.render('cut_order_input')
 })
 
-app.post('/submit-order', (req,res) => {
-    let orderString = JSON.stringify(req.body)
-    const options = {
-        method: 'POST',
-        url: 'https://notify-api.line.me/api/notify',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: 'Bearer EJH870n6DikXhkaAkl7o0ALfeHEkDfrLYEmmnkOdNUQ'
-        },
-        form: { message: orderString}
-      };
-      
-      request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-      });
+app.get('/success', (req,res) => {
+    res.render('cut_order_redirect')
 })
 
-// app.post('/order', async(req,res) => {
-//     const order = req.body
-//     const client = new MongoClient(uri)
-//     await client.connect()
-//     await client.db('mydb').collection('order').insertOne({
-//         id: parseInt(order.id),
-//         type: order.glass,
-//         thickness: order.thickness,
-//         width: order.width,
-//         height: order.height,
-//         quantity: order.quantity
-//     });
-//     await client.close()
-//     res.status(200).send({
-//         "status": "ok",
-//         "message": "Order has been inserted!"
-//     })
-// })
+app.post("/submit-order", (req, res) => {
+  let textMessage;
+  let customerInfo = `
+ชื่อ : ${req.body.name}
+เบอร์ : ${req.body.phone}
+ไลน์ : ${req.body.line}
+วันมารับ : ${req.body.pickupDate}
+เวลามารับ : ${req.body.pickupTime}\n
+`;
+  let orderInfo = ``;
+  for (let i = 0; i < (req.body.glass).length; i++) {
+    orderInfo += `${req.body.glass[i]} - ${req.body.size[i]} - ${req.body.quantity[i]} \n`;
+  }
+  textMessage = customerInfo + orderInfo;
+  const options = {
+    method: "POST",
+    url: "https://notify-api.line.me/api/notify",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Bearer EJH870n6DikXhkaAkl7o0ALfeHEkDfrLYEmmnkOdNUQ",
+    },
+    form: { message: textMessage },
+  };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    console.log(body);
+  });
+  res.redirect("/success");
+});
 
 app.listen(port, () => {
     console.log('Server start!')

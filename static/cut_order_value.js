@@ -199,6 +199,7 @@ function deleteOrder(number) {
 }
 
 function confirmSubmit() {
+
     if (customerName === "" || customerPhone === "" || customerLineID === "" || pickupDate === "" || pickupTime === "") {
         Swal.fire({
             title : "กรุณากรอกข้อมูลผู้สั่งตัดให้ครบ",
@@ -208,6 +209,17 @@ function confirmSubmit() {
         })
         return
     } 
+
+    if (orderQuantity == 0) {
+        Swal.fire({
+            title : "กรุณาเพิ่มรายการสั่งตัดกระจก",
+            icon : 'warning',
+            confirmButtonText : "ปิด",
+            confirmButtonColor : "#10446c"
+        })
+        return
+    }
+
     Swal.fire({
         title: 'ยืนยันการส่งรายการ',
         text: "กรุณาตรวจสอบข้อมูลผู้สั่งตัด และขนาดตัดให้ถูกต้องก่อนส่ง",
