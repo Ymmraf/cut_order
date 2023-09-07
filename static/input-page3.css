@@ -91,3 +91,7 @@
 .submit-button:hover {
     background-color: #a90000;
 }
+
+.submit-form {
+    display: none;
+}

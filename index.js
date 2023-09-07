@@ -26,17 +26,9 @@ app.post('/submit-order', (req,res) => {
         url: 'https://notify-api.line.me/api/notify',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: 'Bearer YSzjFRj6ECNYQD88DdzYFRS1tUbdsXKkO7B6UTTZIeY'
+          Authorization: 'Bearer EJH870n6DikXhkaAkl7o0ALfeHEkDfrLYEmmnkOdNUQ'
         },
-        form: {message: `
-หวัดดีจ้า
-นี่คือการ
-ทดสอบว่า
-เราจะส่งข้อ
-ความโดย
-ที่เว้นบรร
-ทัดได้มั้ย
-        `}
+        form: { message: orderString}
       };
       
       request(options, function (error, response, body) {
