@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  {{> head }}
+  <body>
+    <div class="input-body">
+
+      <div class="topbar">
+        <div class="logo-container-input">
+            <img src="/static/Logo HCL White png.png" alt="Logo HCL glass" class="logo-input">
+        </div>
+        <div class="heading white center">สั่งตัดกระจกลงไซส์</div>
+      </div>
+
+      <div class="page1" id="page1">
+        <div class="form-container">
+          <div class="form">
+            <p class="form-text">ข้อมูลผู้สั่งตัด</p>
+            <span class="section-line"></span>
+            <p class="form-text" style="margin-top: 0px;">ชื่อ</p>
+            <input class="form-input" type="text" placeholder="เช่น คุณฟิวส์" name="name" id="name">
+            <p class="form-text">เบอร์โทร</p>
+            <input class="form-input" type="number" placeholder="0xx-xxx-xxxx" name="phone" id="phone">
+            <p class="form-text">LineID</p>
+            <input class="form-input" type="text" placeholder="ID" name="line" id="line">
+            <span class="section-line"></span>
+            <p class="form-text" style="margin-top: 0px;">วันที่เข้ามารับ</p>
+            <input type="date" class="date" name="pickupDate" id="pickupDate">
+            <span class="section-line"></span>
+            <p class="form-text" style="margin-top: 0px;">เวลาที่เข้ามารับ</p>
+            <select class="dropdown" style="margin-top: 5px;" id="timeSelect" onchange="timeOption()">
+              <option selected disabled>เลือกเวลา</option>
+              <option value="inform">ตัดเสร็จแล้วให้โทรบอก</option>
+              <option value="chosen">เลือกเวลาเอง</option>
+            </select>
+              <div id="orderTime">
+              </div>
+          </div>
+        </div>
+        <div class="nextBtn-container">
+          <button class="nextBtn" onclick="changePage('forward')">ถัดไป ></button>
+        </div>
+      </div>
+
+      <div class="page2" id="page2">
+        <div class="form-container">
+          <div class="form">
+            <p class="form-heading">กรอกไซส์และกระจกที่จะใช้</p>
+            <select class="dropdown" id="glassType">
+              <option disabled selected class="disabled-option" value="">เลือกชนิดกระจก</option>
+              <option>ใส</option>
+              <option>เขียวใส</option>
+              <option>เขียวเข้ม PL</option>
+              <option>ฟ้าใส</option>
+              <option>ยูโรบรอนซ์</option>
+              <option>ชายูโรเกรย์</option>
+              <option>ชาดำ</option>
+              <option>เงาใส</option>
+              <option>เงาชมพู</option>
+              <option>เงาทอง 18K</option>
+              <option>เงายูโรเกรย์</option>
+              <option>เงายูโรบรอนซ์</option>
+              <option>เคลือบสีขาว</option>
+              <option>เคลือบสีดำ</option>
+              <option>เคลือบสีฟ้า</option>
+              <option>เคลือบสีแดง</option>
+              <option>เคลือบสีเขียว</option>
+              <option>ฝ้า</option>
+              <option>โซลาฟ้า</option>
+              <option>โซลาเขียว</option>
+              <option>โซลายูโรบรอนซ์</option>
+    
+            </select>
+            <select class="dropdown" style="margin-bottom: 0px" id="thickness">
+              <option disabled selected value="">เลือกความหนา</option>
+              <option>5 มิล</option>
+              <option>6 มิล</option>
+              <option>8 มิล</option>
+              <option>10 มิล</option>
+              <option>12 มิล</option>
+            </select>
+            <span class="section-line"></span>
+            <p class="form-text" style="margin-top: 0px;">ความกว้าง (มิลลิเมตร)</p>
+            <input class="form-input" type="number" placeholder="กรอกความกว้าง" id="width">
+            <p class="form-text">ความสูง (มิลลิเมตร)</p>
+            <input class="form-input" type="number" placeholder="กรอกความสูง" id="height">
+            <span class="section-line"></span>
+            <p class="form-text" style="margin-top: 0px;">จำนวน</p>
+            <div class="quantity-container">
+              <div class="plus-minus-container">
+                <button type="button" class="plus-minus" onclick="plusMinus('minus')">-</button>
+              </div>
+              <p class="quantity" id="quantity"></p>
+              <div class="plus-minus-container">
+                <button type="button" class="plus-minus" onclick="plusMinus('plus')">+</button>
+              </div>
+            </div>
+            <span class="section-line"></span>
+            <button type="button" class="addBtn" onclick="addGlassOrder()">เพิ่มรายการ</button>
+          </div>
+        </div>
+
+        <div class="form-container order-container" id="orderContainer">
+          <div class="form">
+            <p class="form-heading">รายการที่สั่ง</p>
+            <span class="section-line" style="margin-top: 0px"></span>
+              <div id="orderPage3">
+                
+              </div>
+            <div class="listOrder" style="width:80%" id="listOrder">
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="nextBtn-container">
+          <button class="nextBtn" onclick="changePage('back')">< ย้อนกลับ</button>
+          <button class="nextBtn" onclick="changePage('forward')" id="pageTwoForward">ถัดไป ></button>
+        </div>
+      </div>
+
+      <div class="page3" id="page3">
+        
+        <div>
+          <table class="customer-table">
+            <thead>
+              <th colspan="2">ข้อมูลผู้สั่งตัด</th>
+            </thead>
+            <tbody id="customerInfoTable">
+              
+            </tbody>
+          </table>
+          <p class="form-text center">สรุปรายการสั่งตัด</p>
+          <div id="orderSummary">
+            <table class="order-table">
+              <thead>
+                <th>กระจก</th>
+                <th>ขนาด</th>
+                <th>จำนวน</th>
+              </thead>
+              <tbody id="final-order-container">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="nextBtn-container">
+          <button class="nextBtn" onclick="changePage('back')">< ย้อนกลับ</button>
+        </div>
+        <div class="submit-button-container">
+          <form action="submit-order" method="post" id="submitForm">
+
+            <button class="submit-button" action="submit">ส่งรายการตัด</button>
+          </form>
+        </div>
+      </div>
+
+      <script src="/static/cut_order_value.js"></script>
+      <script src="/static/cut_order_input.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </div>
+  </body>
+</html>

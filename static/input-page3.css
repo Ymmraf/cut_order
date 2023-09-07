@@ -1,0 +1,93 @@
+.page3 {
+    display: none;
+    flex-direction: column;
+}
+
+.listOrder-Container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.listOrder-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-order-button {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #ff7575;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.order-container {
+    position: static;
+    display: none;
+}
+
+.order-table, .customer-table {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px 20px 0px 0px;
+    max-width: 800px;
+}
+
+.order-table thead, .customer-table thead {
+    color: white;
+    background-color: #10446c;
+    height: 40px;
+    font-size: 18px;
+}
+
+.order-table tbody, .customer-table tbody {
+    font-weight: 300;
+    background-color: #b7cfe2;
+}
+
+.order-table tr, .customer-table tr {
+    height: 32px;
+}
+
+.order-table td, .customer-table td {
+    text-align: center;
+    font-size: 18px;
+}
+
+.customer-info-heading {
+    font-weight: 500;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.submit-button {
+    color: white;
+    background-color: #fb0000;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    padding-inline: 70px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    min-width: 125px;
+    transition: 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #a90000;
+}

@@ -1,0 +1,57 @@
+body, html {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Kanit', sans-serif;
+    height: 100%;
+}
+
+.home-body {
+    height: 100%;
+    background-color: #10446c;
+}
+
+.logo {
+    width: 100%;
+}
+
+.logo-container-home {
+    width: 40vw;
+    max-width: 300px;
+}
+
+.shop-name {
+    margin-top: 0px;
+}
+.heading {
+    text-align: center;
+    color: white;
+}
+
+.cut {
+    font-size: 24px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.next-button {
+    font-family: 'Kanit', sans-serif;
+    background-color: white;
+    color : #10446c;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.next-button:hover {
+    background-color: #cccccc;
+}

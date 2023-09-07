@@ -1,0 +1,121 @@
+.page2 {
+    flex-direction: column;
+    display: none;
+}
+
+.icon-container {
+    display: none;
+    padding-right: 15px;
+    justify-content: end;
+}
+
+.list-icon {
+    font-size: 25px;
+    position: relative;
+}
+
+.list-icon-button {
+    background: none;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.number {
+    display: none;
+    border-radius: 50%;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    font-size: 12px;
+    position: absolute;
+    right : 8px;
+    top: 30px;
+}
+
+.quantity-container {
+    text-align: center;
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.quantity {
+    margin: 0;
+    font-size: 24px;
+}
+
+.button-quantity {
+    background-color: none;
+    border: none;
+}
+
+.plus-minus {
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    margin: 0px;
+    border-radius: 50%;
+    background-color: #10446c;
+    border: none;
+    cursor: pointer;
+}
+
+.plus-minus.container {
+    justify-content: center;
+}
+
+.addBtn {
+    color: white;
+    background-color: #10446c;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    padding-inline: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.order-container-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+}
+
+.order-container {
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    position: fixed;
+    top:5%;
+    box-shadow: 2px 2px 8px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closeButton {
+    vertical-align: center;
+    height: 40px;
+    color: white;
+    background-color: #10446c;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    padding-inline: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    min-width: 125px;
+    position: fixed;
+    bottom: 5%;
+}
