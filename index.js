@@ -2,7 +2,7 @@ const express = require('express')
 const request = require('request')
 const app = express()
 const hbs = require('hbs')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 
 app.use(express.urlencoded({ extended : true }))
 app.use('/static', express.static('static'))
