@@ -9,6 +9,10 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
+app.listen(PORT, () => {
+  console.log('Server start!')
+})
+
 app.get('/', (req,res) => {
     res.render('cut_order')
 })
@@ -57,6 +61,3 @@ app.post("/submit-order", (req, res) => {
   res.redirect("/success");
 });
 
-app.listen(PORT, () => {
-    console.log('Server start!')
-})
