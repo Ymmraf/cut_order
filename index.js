@@ -10,7 +10,7 @@ app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
 app.listen(PORT, () => {
-  console.log('Server start!')
+  console.log(`Server start at https://localhost:${PORT}`)
 })
 
 app.get('/', (req,res) => {
