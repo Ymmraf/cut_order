@@ -119,6 +119,15 @@ function addGlassOrder() {
         })
         return
     }
+    if (id('width').value > 3660) {
+        Swal.fire({
+            title : "กระจกต้องไม่เกิน 3660",
+            icon : 'warning',
+            confirmButtonText : "ปิด",
+            confirmButtonColor : "#10446c"
+        })
+        return
+    }
     glassType = id('glassType').value
     thickness = id('thickness').value
     width = id('width').value

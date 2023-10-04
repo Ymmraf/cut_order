@@ -2,9 +2,7 @@ const express = require('express')
 const request = require('request')
 const app = express()
 const hbs = require('hbs')
-const { MongoClient } = require('mongodb')
-const port = 3000
-const uri = "mongodb://localhost:27017"
+const PORT = process.env.PORT || 3000
 
 app.use(express.urlencoded({ extended : true }))
 app.use('/static', express.static('static'))
@@ -33,8 +31,13 @@ app.post("/submit-order", (req, res) => {
 เวลามารับ : ${req.body.pickupTime}\n
 `;
   let orderInfo = ``;
-  for (let i = 0; i < (req.body.glass).length; i++) {
-    orderInfo += `${req.body.glass[i]} - ${req.body.size[i]} - ${req.body.quantity[i]} \n`;
+  console.log(req.body)
+  if (typeof(req.body.glass) === 'string') {
+    orderInfo += `${req.body.glass} - ${req.body.size} - ${req.body.quantity} \n`
+  } else {
+    for (let i = 0; i < (req.body.glass).length; i++) {
+      orderInfo += `${req.body.glass[i]} - ${req.body.size[i]} - ${req.body.quantity[i]} \n`;
+    }
   }
   textMessage = customerInfo + orderInfo;
   const options = {
@@ -42,7 +45,7 @@ app.post("/submit-order", (req, res) => {
     url: "https://notify-api.line.me/api/notify",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer EJH870n6DikXhkaAkl7o0ALfeHEkDfrLYEmmnkOdNUQ",
+      Authorization: "Bearer 8klXwmmIRyLH5vz9yCuaYSpriggb3oWQohVBXPht7P2",
     },
     form: { message: textMessage },
   };
@@ -54,6 +57,6 @@ app.post("/submit-order", (req, res) => {
   res.redirect("/success");
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log('Server start!')
 })
