@@ -9,9 +9,6 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
-app.listen(PORT, () => {
-  console.log(`Server start at https://localhost:${PORT}`)
-})
 
 app.get('/', (req,res) => {
     res.render('cut_order')
@@ -54,10 +51,13 @@ app.post("/submit-order", (req, res) => {
     form: { message: textMessage },
   };
 
-  request(options, function (error, response, body) {
+  request(options, function (error, body) {
     if (error) throw new Error(error);
     console.log(body);
   });
   res.redirect("/success");
 });
 
+app.listen(PORT, () => {
+  console.log(`Server start at https://localhost:${PORT}`)
+})
