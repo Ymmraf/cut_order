@@ -119,7 +119,7 @@ function addGlassOrder() {
         })
         return
     }
-    if (id('width').value > 3660) {
+    if (id('width').value > 3660 || id('height').value > 3660) {
         Swal.fire({
             title : "กระจกต้องไม่เกิน 3660",
             icon : 'warning',
