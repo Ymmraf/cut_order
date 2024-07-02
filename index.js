@@ -9,7 +9,6 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
-
 app.get('/', (req,res) => {
     res.render('cut_order')
 })
