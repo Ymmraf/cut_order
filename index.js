@@ -45,7 +45,7 @@ app.post("/submit-order", (req, res) => {
     url: "https://notify-api.line.me/api/notify",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer 8klXwmmIRyLH5vz9yCuaYSpriggb3oWQohVBXPht7P2",
+      Authorization: `Bearer ${process.env.Authorization}`,
     },
     form: { message: textMessage },
   };
